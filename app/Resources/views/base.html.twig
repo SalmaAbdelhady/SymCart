@@ -1,0 +1,88 @@
+<!-- app/Resources/views/base.html.twig -->
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
+        <title>{% block title %}SymCart - SymCart{% endblock %}</title>
+
+        {% block stylesheets %}
+
+            <link href="{{ asset('bundles/salmasymcart/css/screen.css') }}" type="text/css" rel="stylesheet" />
+
+
+            <link href="{{ asset('css/bootstrap_bootstrap_1.css') }}" type="text/css" rel="stylesheet" />
+
+
+        {% endblock %}
+
+
+
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        <section id="wrapper">
+            <header id="header">
+
+
+                <br />
+                <hgroup>
+                    <h2>{% block blog_title %}<a href="#">Sym-Cart</a>{% endblock %}</h2>
+                    <h3>{% block blog_tagline %}{% endblock %}</h3>
+                </hgroup>
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+                    {% block navigation %}
+                        <div  style="float:right">
+
+                            {{ sonata_block_render({ 'type': 'sonata.user.block.account' }) }}
+
+                        </div>
+                        <div  style="float:left">
+
+
+                            <nav  >
+                                <ul  class="nav nav-pills">
+
+                                    <li><a href="{{path('index')}}">
+
+                                            <span class="glyphicon glyphicon-home"></span> Home
+
+                                        </a></li>
+                                    <li><a href="{{path('offer_list')}}">Offers</a></li>
+                                        {% render controller("SalmaSymCartBundle:Section:sectionMenu") %}
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endblock %}
+                </nav>
+            </header>
+            <br /><br />
+            <section class="col-md-12">
+
+                {% block body %}
+
+                {% endblock %}
+
+            </section>
+            <br /><br />
+
+            <div id="footer">
+
+                {% block footer %}
+                    created by <a href="">Salma Abdelhady</a>
+                {% endblock %}
+            </div>
+        </section>
+
+        {% block javascripts %}
+            {% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>
