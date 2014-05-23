@@ -1,0 +1,66 @@
+{# empty Twig template #}
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+{% block title %}My Wishlist!{% endblock %}
+{% block body %}
+    <div id="cart-alert" style="display: none" class="alert alert-success">
+        <button type="button" onclick="$('#cart-alert').hide()" class="close">&times;</button>
+        <strong>Success!</strong> the item has been added to <a href="{{path('cart_index')}}" class="alert-link">your Cart!</a>
+    </div>
+    <table class="table table-striped ">
+
+
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {% if item.ext %}
+
+                                    <img class="thumbnail" width="100" height="100"  src="{{ asset(['bundles/salmasymcart/images/products/',item.id,'.',item.ext]|join) }}" />
+
+
+                                {% else %}
+                                    <img  class="thumbnail" src="{{ asset('bundles/salmasymcart/images/no-image.png') }}" />
+
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <h2>{{item.name}}</h2> 
+                                <p>{{item.model}}</p>
+                                <strong style="color: #D43F3A" >{{item.price}} USD</strong>
+
+
+                            </div>
+                    </td>
+                    <td align="right">
+                        <button class="btn btn-success" id="add-to-cart" action="{{ path('cart_add', {'id': item.id}) }}" role="button">Add to Cart
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </button>
+                        <a class="btn btn-danger" href="{{ path('wishlist_remv_item', {'id': item.id}) }}" role="button">Remove
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+
+                </tr>
+                {% else %}
+                    <tr  class="warning"> 
+                        <td colspan="5" align="center">Your Wishlist is Empty</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {%  if items %}
+                    <a class="btn btn-danger" href="{{ path('wishlist_empty') }}" role="button">Remove All items
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                {% endif %}
+                {% endblock %}
+                    {% block javascripts %}
+
+                        {{ parent() }}
+
+                        <script src="{{ asset('bundles/salmasymcart/js/cart.js') }}"></script>
+
+                    {% endblock %}

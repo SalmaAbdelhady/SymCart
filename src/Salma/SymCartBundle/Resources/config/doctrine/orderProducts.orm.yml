@@ -1,0 +1,33 @@
+Salma\SymCartBundle\Entity\orderProducts:
+    type: entity
+    table: null
+    repositoryClass: Salma\SymCartBundle\Entity\orderProductsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: integer
+        subtotal:
+            type: decimal
+            precision : 10
+            scale : 2
+    
+    manyToOne:
+        product_id:
+            targetEntity: Product
+            cascade: {  }
+            joinColumns:
+                product_id:
+                    referencedColumnName: id
+ 
+        order_id:
+            targetEntity: Orders
+            cascade: {  }
+            joinColumns:
+                order_id:
+                    referencedColumnName: id  
+    lifecycleCallbacks: {  }

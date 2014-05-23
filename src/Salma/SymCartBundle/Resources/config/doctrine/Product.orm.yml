@@ -1,0 +1,51 @@
+Salma\SymCartBundle\Entity\Product:
+    type: entity
+    table: null
+    repositoryClass: Salma\SymCartBundle\Entity\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        ext:
+            type: string
+            length: 10
+        price:
+            type: decimal
+            precision : 10
+            scale : 2
+        features:
+            type: text
+        specifications:
+            type: text
+        status:
+            type: string
+            length: 255
+               
+        date:
+            type: datetime
+        model:
+            type: string
+            lenght: 100
+        quantity:
+            type: integer
+    manyToOne:
+        section_id:
+            targetEntity: Section
+            cascade: {  }
+            joinColumns:
+                section_id:
+                    referencedColumnName: id
+                    
+    oneToOne:
+        offer:
+          targetEntity: Offer
+         
+          mappedBy: product
+            
+    lifecycleCallbacks: {  }

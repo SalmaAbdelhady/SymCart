@@ -1,0 +1,35 @@
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+
+{% block title %}Sections!{% endblock %}
+
+{% block body %}
+    {% for section in sections %}
+        <div class="panel panel-info">
+
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{ path('section_show', { 'id': section.id }) }}">{{ section.name }}</a></h3>
+            </div>
+            <div class="media">
+                <a class="pull-left" href="#" align="center">
+                    {% if section.ext %}
+                     
+                        <img class="thumbnail media-body" width="180" height="180"  src="{{ asset(['bundles/salmasymcart/images/sections/',section.id,'.',section.ext]|join) }}" />
+                       
+                     
+                    {% else %}
+                        <img  class="thumbnail" src="{{ asset('bundles/salmasymcart/images/no-image.png') }}" />
+
+                    {% endif %}
+                </a>
+                <div class="media-body" >
+                    <p>{{ section.description }}</p>
+                    <p class="continue"><a href="{{ path('section_show', { 'id': section.id }) }}">View Products...</a></p>
+                </div>
+            </div>
+
+
+        </div>
+        {% else %}
+            <p>There are no section entries for SymCart</p>
+            {% endfor %}
+                {% endblock %}

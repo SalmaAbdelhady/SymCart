@@ -1,0 +1,58 @@
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+
+{% block title %}Offers - SymCart{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div id="cart-alert" style="display: none" class="alert alert-success">
+            <button type="button" onclick="$('#cart-alert').hide()" class="close">&times;</button>
+            <strong>Success!</strong> the item has been added to <a href="{{path('cart_index')}}" class="alert-link">your Cart!</a>
+        </div>
+        <div class="col-md-12">
+            {% for offer in offers %}
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <h3 > 
+                            <span style="alignment-baseline: left" class="label label-danger">SALE</span>
+                            <span style="float: right"  class="label label-info">{{offer.discount}} $</span>
+                        </h3>
+                        <br />
+
+                        {% if offer.product.ext %}
+
+                            <img  src="{{ asset(['bundles/salmasymcart/images/products/',offer.product.id,'.',offer.product.ext]|join) }}" />
+
+
+                        {% else %}
+                            <img  src="{{ asset('bundles/salmasymcart/images/no-image.png') }}" />
+
+                        {% endif %}
+                        <div class="caption">
+                            <h3>
+                                <a href="{{ path('product_show', {'id': offer.id}) }}">{{offer.product.name}}</a>
+
+                            </h3>
+                            <p></p>
+                            <p align="center">
+
+
+                                <button class="btn btn-success" id="add-to-cart" action="{{ path('cart_add', {'id': offer.product.id}) }}" role="button">Add to Cart
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                    <p>There are no offers entries</p>
+                    {% endfor %}
+                    </div>
+                    {% endblock %}
+                        {% block javascripts %}
+
+                            {{ parent() }}
+
+                            <script src="{{ asset('bundles/salmasymcart/js/cart.js') }}"></script>
+
+                        {% endblock %}

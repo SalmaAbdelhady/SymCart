@@ -1,0 +1,20 @@
+Salma\SymCartBundle\Entity\Section:
+    type: entity
+    table: null
+    repositoryClass: Salma\SymCartBundle\Entity\SectionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        ext:
+            type: string
+            lenght: 10
+    lifecycleCallbacks: {  }

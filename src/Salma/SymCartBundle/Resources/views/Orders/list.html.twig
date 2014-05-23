@@ -1,0 +1,35 @@
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+
+{% block title %}Track Orders{% endblock %}
+
+{% block body %}
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <td><strong>Order ID</strong></td>
+                <td><strong>Created At</strong></td>
+                <td><strong>Status</strong></td>
+                <td><strong>Total</strong></td>
+                <td align="center"><strong>Action</strong></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>
+                        <a href="{{ path('order_show', {'id': order.id}) }}"> #{{order.orderNum}}</a>
+                    </td>
+                    <td>{{order.createdAt|date("m/d/Y")}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.total}} USD</td>
+                    <td align="center"><a href="{{ path('order_show', {'id': order.id}) }}" role="button" class="btn btn-primary">View Details</a></td>
+                </tr>
+                {% else %}
+                    <tr  class="warning"> 
+                        <td colspan="5" align="center">No Orders For You</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endblock %}

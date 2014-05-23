@@ -1,0 +1,34 @@
+Salma\SymCartBundle\Entity\Orders:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        orderNum:
+            type: integer
+        createdAt:
+            type: datetime
+        status:
+            type: string
+            length: '50'
+        total:
+            type: decimal
+            precision : 10
+            scale : 2
+    manyToOne:
+        user_id:
+            targetEntity: \Application\Sonata\UserBundle\Entity\User
+            cascade: {  }
+            joinColumns:
+                user_id:
+                    referencedColumnName: id  
+    oneToMany:
+        join_id:
+          targetEntity: orderProducts
+          mappedBy: order_id
+          cascade: ["persist", "merge"]
+    lifecycleCallbacks: {  }

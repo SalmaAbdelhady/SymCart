@@ -1,0 +1,64 @@
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+{% block title %}{{section.name}}{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{section.name}}<small>items</small></h1>
+    </div>
+
+    <div class="row">
+        <div id="cart-alert" style="display: none" class="alert alert-success">
+            <button type="button" onclick="$('#cart-alert').hide()" class="close">&times;</button>
+            <strong>Success!</strong> the item has been added to <a href="{{path('cart_index')}}" class="alert-link">your Cart!</a>
+        </div>
+        <div class="col-md-12">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="thumbnail products_item ">
+
+                        <h3 align="right"> 
+                            <span class="label label-info">{{product.price}} $</span>
+                        </h3>
+                        <h3>
+                            <a href="{{ path('product_show', {'id': product.id}) }}">{{product.name}}</a>
+
+                        </h3>
+                        {% if product.ext %}
+
+                            <img style="width: 400;height: 263"   src="{{ asset(['bundles/salmasymcart/images/products/',product.id,'.',product.ext]|join) }}" />
+
+
+                        {% else %}
+                            <img width="400" height="263" src="{{ asset('bundles/salmasymcart/images/no-image.png') }}" />
+
+                        {% endif %}
+                        <div class="caption">
+
+                            <p></p>
+                            <p align="center">
+
+                                <a type="button" href="{{ path('wishlist_add', {'id': product.id}) }}" class="btn btn-primary">
+                                    Wish-list
+                                    <span class="glyphicon glyphicon-star"></span>
+
+                                </a>
+                                <button class="btn btn-success" id="add-to-cart" action="{{ path('cart_add', {'id': product.id}) }}" role="button">Add to Cart
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                    <p>There are no products entries for this sections</p>
+                    {% endfor %}
+                    </div>
+                    {% endblock %}
+                        {% block javascripts %}
+
+                            {{ parent() }}
+
+                            <script src="{{ asset('bundles/salmasymcart/js/cart.js') }}"></script>
+
+                        {% endblock %}

@@ -1,0 +1,31 @@
+Salma\SymCartBundle\Entity\Wishlist:
+    type: entity
+    table: null
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+   
+    oneToOne:
+        user_id:
+            targetEntity: \Application\Sonata\UserBundle\Entity\User
+            cascade: {  }
+            joinColumns:
+                user_id:
+                    referencedColumnName: id   
+    manyToMany:
+        product:
+          targetEntity: Product
+          joinTable:
+            name: wishlist_products
+            joinColumns:
+              list_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              product_id:
+                referencedColumnName: id
+           
+    lifecycleCallbacks: {  }

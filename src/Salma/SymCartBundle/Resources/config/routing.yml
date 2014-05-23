@@ -1,0 +1,109 @@
+#section routes
+section_show:
+    pattern: /section/show/{id}
+    defaults: { _controller: SalmaSymCartBundle:Section:show }
+    requirements:
+        id:  \d+
+        
+section_list:
+    pattern: /section/list
+    defaults: { _controller: SalmaSymCartBundle:Section:list }
+#end section routes
+
+#cart routes start
+cart_index:
+    pattern: /mycart
+    defaults: { _controller: SalmaSymCartBundle:Cart:index }
+  
+cart_add:
+    pattern: /cart/add/{id}/{offer}
+    defaults: { _controller: SalmaSymCartBundle:Cart:add , offer: 0 }
+    methods:  [POST]
+    requirements:
+        id:  \d+
+        offer:  \d+
+        
+cart_off_add:
+    pattern: /cart/addoff/{id}
+    defaults: { _controller: SalmaSymCartBundle:Cart:addoffer }
+    methods:  [POST]
+    requirements:
+        id:  \d+
+        
+cart_checkout:
+    pattern: /cart/checkout
+    defaults: { _controller: SalmaSymCartBundle:Cart:checkout }
+
+cart_empty:
+    pattern: /cart/empty
+    defaults: { _controller: SalmaSymCartBundle:Cart:empty }
+
+cart_remv_item:
+    pattern: /cart/remvitem/{id}
+    defaults: { _controller: SalmaSymCartBundle:Cart:remvItem }
+    requirements:
+        id:  \d+
+        
+cart_change_quantity:
+     pattern: /cart/changeq
+     defaults: { _controller: SalmaSymCartBundle:Cart:changeItemQuantity }
+     methods:  [POST]
+#cart routes end
+
+#wishlist routes start
+wishlist_index:
+    pattern: /mywishlist
+    defaults: { _controller: SalmaSymCartBundle:Wishlist:index }
+  
+wishlist_add:
+    pattern: /wishlist/add/{id}
+    defaults: { _controller: SalmaSymCartBundle:Wishlist:add }
+    requirements:
+        id:  \d+
+        
+wishlist_empty:
+    pattern: /wishlist/empty
+    defaults: { _controller: SalmaSymCartBundle:Wishlist:empty }
+
+wishlist_remv_item:
+    pattern: /wishlist/remvitem/{id}
+    defaults: { _controller: SalmaSymCartBundle:Wishlist:remvItem }
+    requirements:
+        id:  \d+
+#wishlist routes end
+
+#product routes start
+product_show:
+    pattern: /product/{id}
+    defaults: { _controller: SalmaSymCartBundle:Product:show }
+    requirements:
+        id:  \d+
+#product routes end
+
+#order routes start
+order_list:
+    pattern: /order/list
+    defaults: { _controller: SalmaSymCartBundle:Orders:list }
+
+order_show:
+    pattern: /order/show/{id}
+    defaults: { _controller: SalmaSymCartBundle:Orders:show }
+    requirements:
+        id:  \d+
+#order routes end
+
+index:
+    pattern: /
+    defaults: { _controller: SalmaSymCartBundle:Page:index }
+
+about:
+    pattern: /about
+    defaults: { _controller: SalmaSymCartBundle:Page:about }
+
+offer_list:
+    pattern: /off/l
+    defaults: { _controller: SalmaSymCartBundle:Offer:list }
+
+offer_show:
+    pattern: /off/{id}/s
+    defaults: { _controller: SalmaSymCartBundle:Offer:show }

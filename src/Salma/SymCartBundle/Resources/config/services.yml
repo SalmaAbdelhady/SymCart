@@ -1,0 +1,37 @@
+parameters:
+#    salma_sym_cart.example.class: Salma\SymCartBundle\Example
+
+services:
+#    salma_sym_cart.example:
+#        class: %salma_sym_cart.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    salma_sym_cart.admin.section:
+        class: Salma\SymCartBundle\Admin\SectionAdmin
+        arguments: [~, Salma\SymCartBundle\Entity\Section, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Section}
+        
+   
+    salma_sym_cart.admin.orders:
+        class: Salma\SymCartBundle\Admin\OrdersAdmin
+        arguments: [~, Salma\SymCartBundle\Entity\Orders,  SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Orders}
+
+    salma_sym_cart.admin.product:
+        class: Salma\SymCartBundle\Admin\ProductAdmin
+        arguments: [~, Salma\SymCartBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Product}
+
+    salma_sym_cart.admin.offer:
+        class: Salma\SymCartBundle\Admin\OfferAdmin
+        arguments: [~, Salma\SymCartBundle\Entity\Offer, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Offer}
+
+    salma_sym_cart.admin.order_products:
+        class: Salma\SymCartBundle\Admin\orderProductsAdmin
+        arguments: [~, Salma\SymCartBundle\Entity\orderProducts, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: orderProducts}

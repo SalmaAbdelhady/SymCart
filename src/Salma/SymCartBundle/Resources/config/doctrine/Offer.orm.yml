@@ -1,0 +1,36 @@
+Salma\SymCartBundle\Entity\Offer:
+    type: entity
+    table: null
+    repositoryClass: Salma\SymCartBundle\Entity\OfferRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        
+        discount:
+            type: decimal
+            precision : 10
+            scale : 2
+        startDate:
+            type: datetime
+            column: start_date
+        endDate:
+            type: datetime
+            column: end_date
+        status:
+            type: string
+            length: 255
+           
+     
+    oneToOne:
+        product:
+            targetEntity: Product
+            inversedBy: offer
+            cascade: {  }
+            joinColumns:
+                product_id:
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+{% extends "SalmaSymCartBundle::layout.html.twig" %}
+
+{% block title %}SymCart{% endblock %}
+
+
+{% block body %}
+
+    {% if products %}
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>Products</h1>
+            </div>
+            {% for product in products %}
+
+                <div class="col-md-3">
+                    <div class="thumbnail products_item">
+                        <h3 align="right"> 
+                            <span   class="label label-info">{{product.price}} $</span>
+
+                        </h3>
+                        <h2> <a href="{{ path('product_show', {'id': product.id}) }}">{{product.name}}</a>
+                        </h2>
+                        <br />
+                        <a href="{{ path('product_show', {'id': product.id}) }}">
+                        {% if product.ext %}
+
+                            <img width="180" height="180" class="thumbnail" src="{{ asset(['bundles/salmasymcart/images/products/',product.id,'.',product.ext]|join) }}" />
+
+
+                        {% else %}
+                            <img  src="{{ asset('bundles/salmasymcart/images/no-image.png') }}" />
+
+                        {% endif %}
+                        </a>
+                    </div>
+                </div>
+
+            {%endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+

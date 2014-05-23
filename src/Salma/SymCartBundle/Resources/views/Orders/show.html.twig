@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}#{{order.orderNum}}{% endblock %}
+
+{% block body %}
+    <h2><strong>#{{order.orderNum}}</strong></h2>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <td align="center"><strong>Product Name</strong></td>
+                <td align="center"><strong>Quantity</strong></td>
+                <td align="center"><strong>Subtotal</strong></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td align="center">
+                        <a href="{{ path('product_show', {'id': item.productId.id}) }}">{{item.productId.name}}</a>
+                    </td>
+                    <td align="center">{{item.quantity}}</td>
+                    <td align="center">{{item.subtotal}} USD</td>
+
+                </tr>
+                {% else %}
+                    <tr  class="warning"> 
+                        <td colspan="5" align="center">No Orders For You</td>
+                    </tr>
+                    {% endfor %}
+
+                        <tr > 
+                            <td colspan="2" ><strong>Total</strong></td>
+                            <td align="center"><strong>{{order.total}} USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                {% endblock %}
+
