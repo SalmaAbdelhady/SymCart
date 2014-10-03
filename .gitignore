@@ -213,3 +213,30 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Symfony directories start #
+vendor/*
+*/logs/*
+*/cache/*
+web/
+!web/app.php
+!web/robots.txt
+!web/*.ico
+# Symfony directories end #
+node_modules
+# Composer files start #
+composer.phar
+#composer.lock
+
+# Composer files end #
+
+# Configuration files start #
+/app/config/parameters.ini
+app/config/parameters_local.yml
+# Configuration files end #
+
+# Environment files start #
+nbproject/*
+.project/*
+bin/*
+.htaccess
