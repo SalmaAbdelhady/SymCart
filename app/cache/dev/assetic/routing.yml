@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: 'C:/Program Files (x86)/EasyPHP/data/localweb/salma/app/config/routing_dev.yml'
