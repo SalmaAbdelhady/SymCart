@@ -20,6 +20,7 @@ class ShoppingCart extends Cart {
      *                 session.
      *
      * @param string $name The name of the cart.
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
      */
     function __construct($name, $session) {
 
@@ -44,7 +45,7 @@ class ShoppingCart extends Cart {
     /**
      * Get total
      *
-     * @return string 
+     * @return double 
      */
     public function getTotal() {
 

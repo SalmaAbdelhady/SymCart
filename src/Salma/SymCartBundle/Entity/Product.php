@@ -3,7 +3,6 @@
 namespace Salma\SymCartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Salma\SymCartBundle\Model\Item as Item;
 use \Salma\SymCartBundle\Entity\Section as Section;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -174,7 +173,7 @@ class Product {
     /**
      * Set status
      *
-     * @param array $status
+     * @param string $status
      * @return Product
      */
     public function setStatus($status) {
@@ -304,8 +303,8 @@ class Product {
     /**
      * Set image
      *
-     * @param string $image
-     * @return Section
+     * @param UploadedFile $image
+     * @return Product
      */
     public function setImage(UploadedFile $image = null) {
         $this->image = $image;
@@ -318,7 +317,7 @@ class Product {
     /**
      * Get image
      *
-     * @return string 
+     * @return null|UploadedFile 
      */
     public function getImage() {
         return $this->image;

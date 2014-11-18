@@ -14,6 +14,9 @@ class DemoExtension extends \Twig_Extension
         $this->loader = $loader;
     }
 
+    /**
+     * @param callable $controller
+     */
     public function setController($controller)
     {
         $this->controller = $controller;

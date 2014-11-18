@@ -3,7 +3,6 @@
 namespace Salma\SymCartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -90,7 +89,7 @@ class Section {
     /**
      * Set image
      *
-     * @param string $image
+     * @param UploadedFile $image
      * @return Section
      */
     public function setImage(UploadedFile $image = null) {
