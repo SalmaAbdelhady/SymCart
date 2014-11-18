@@ -32,6 +32,7 @@ abstract class Cart {
 
     /**
      * save() - Saves the cart to a session variable.
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
      */
     public function save($session) {
         $session->set($this->name, $this->items);
@@ -39,6 +40,7 @@ abstract class Cart {
 
     /**
      * emptycart() - empty the cart contents.
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
      */
     public function emptyCart($session) {
         $session->set($this->name, array());

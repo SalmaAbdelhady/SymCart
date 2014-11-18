@@ -2,8 +2,6 @@
 
 namespace Salma\SymCartBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Orders
  */

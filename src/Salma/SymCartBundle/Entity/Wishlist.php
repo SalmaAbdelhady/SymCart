@@ -2,7 +2,6 @@
 
 namespace Salma\SymCartBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Salma\SymCartBundle\Model\Cart as Cart;
 /**
  * Wishlist
